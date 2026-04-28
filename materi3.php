@@ -30,6 +30,17 @@ function kurang(int $a, int $b){
     $hasil = $a - $b;
     return $hasil;
 }
+
+
+function login($username, $password){
+    $usernameBenar = "admin";
+    $passwordBenar ="12345";
+    if($username == $usernameBenar && $password == $passwordBenar) {
+        return true;
+    } else {
+        return false;
+    }
+}
 ?>
 
 <br><br>
@@ -51,4 +62,28 @@ if (isset($_POST["angka1"])) {
     echo bagi($newAngka1, $newAngka2);
     echo "<br>";
     echo kurang($newAngka1, $newAngka2);
+}
+
+?>
+
+
+<br><br>
+<form method="POST">
+    <label for="username">Username:</label>
+    <input type="text" name="username"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" name="password"><br><br>
+    <input type="submit" name="login" value="Login">
+</form>
+
+<?php
+if (isset($_POST["login"])) {
+    $newUsername = $_POST["username"];
+    $newPassword = $_POST["password"];
+    if (login($newUsername, $newPassword)) {
+        echo "Login Berhasil";
+    } else {
+        echo "Login Gagal";
+    }
+
 }
